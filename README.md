@@ -1,2 +1,2 @@
 # stuff
-This directory contains stuff which are being used for demos and installation.
+This directory contains stuff which is being used for demos and installations.
