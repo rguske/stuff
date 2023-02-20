@@ -1,0 +1,11 @@
+--2023-02-16 13:52:44--  https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.111.133, 185.199.108.133, 185.199.109.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.111.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 15929 (16K) [text/plain]
+Saving to: ‘deploy.yaml’
+
+     0K .......... .....                                      100% 5,94M=0,003s
+
+2023-02-16 13:52:45 (5,94 MB/s) - ‘deploy.yaml’ saved [15929/15929]
+

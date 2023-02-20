@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hackazon-ingress
+  labels:
+    app: hackazon-shop
+  annotations:
+spec:
+  rules:
+  - host: hackazon.apps.cpod-nsxv8.az-stc.cloud-garage.net
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: hackazon-l4
+            port:
+              number: 80

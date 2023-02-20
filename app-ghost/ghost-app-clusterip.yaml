@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghost-deploy
+  labels:
+    app: ghost-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ghost-app
+  template:
+    metadata:
+      labels:
+        app: ghost-app
+    spec:
+      containers:
+      - name: ghost-container
+        image: projects.registry.vmware.com/tanzu_ese_poc/ghost:4.34.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 2368
+#        env:
+#        - name: url
+#          value: http://my-blog.corp.local
+        volumeMounts:
+        - mountPath: /var/lib/ghost/content
+          name: content
+      volumes:
+      - name: content
+        persistentVolumeClaim:
+          claimName: ghost-content
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: ghost
+  name: ghost-svc
+spec:
+  ports:
+    - port: 80
+  selector:
+    app: ghost-app
+  type: ClusterIP
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: ghost-content
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ftt0-r0
+  resources:
+    requests:
+      storage: 5Gi

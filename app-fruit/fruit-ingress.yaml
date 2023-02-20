@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-example
+  namespace: fruit
+#  annotations:
+#    ako.vmware.com/enable-tls: "true"
+
+spec:
+  ingressClassName: avi-lb
+  rules:
+    - host: fruit.avi.cpod-aviv8.az-wdc.cloud-garage.net
+      http:
+        paths:
+        - path: /apple
+          pathType: Prefix
+          backend:
+            service:
+              name: apple-service
+              port:
+                number: 5678
+        - path: /banana
+          pathType: Prefix
+          backend:
+            service:
+              name: banana-service
+              port:
+                number: 5678
+

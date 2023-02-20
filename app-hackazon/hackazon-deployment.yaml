@@ -1,0 +1,22 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: hackazon-shop
+  labels:
+    app: hackazon-shop
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hackazon-shop
+  template:
+    metadata:
+      labels:
+        app: hackazon-shop
+    spec:
+      containers:
+      - name: hackazon-shop
+        image: projects.registry.vmware.com/tanzu_ese_poc/hackazon:1.0
+        ports:
+          - containerPort: 8000
+            protocol: TCP

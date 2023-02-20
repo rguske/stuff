@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: hackazon-l4
+  labels:
+    app: hackazon-shop
+    svc: hackazon-l4
+spec:
+  ports:
+    - port: 80
+      targetPort: 8000
+  selector:
+    app: hackazon-shop
+  type: ClusterIP
